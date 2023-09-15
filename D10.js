@@ -615,7 +615,7 @@ console.log(
 
 */
 console.log("ESERCIZIO 27: ");
-console.log("Mezzo Albero con gli asterischi *");
+console.log("Mezzo Albero con gli asterischi * : ");
 
 function halfTree(num) {
   let albero = "";
@@ -643,19 +643,39 @@ halfTree(3);
 */
 console.log("ESERCIZIO 28: ");
 
+function tree(height) {
+  for (let i = 1; i <= height; i++) {
+    const spaces = " ".repeat(height - i);
+    const stars = "*".repeat(2 * i - 1);
+    console.log(spaces + stars);
+  }
+}
+console.log("Albero di asterischi * in base all'altezza : ");
+tree(11);
+
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
 console.log("ESERCIZIO 29: ");
-let i;
 function isItPrime(numero) {
-  if (numero === 1 || numero === 2) {
+  if (numero <= 1) {
+    return false;
+  }
+  if (numero <= 3) {
     return true;
   }
-  for (i = 2; i < numero; i++) {
-    if (numero % i === 0) {
+
+  if (numero % 2 === 0 || numero % 3 === 0) {
+    return false;
+  }
+
+  for (let i = 5; i * i <= numero; i += 6) {
+    if (numero % i === 0 || numero % (i + 2) === 0) {
       return false;
     }
   }
+
   return true;
 }
+console.log(isItPrime(17)); // Dovrebbe restituire true
+console.log(isItPrime(4)); // Dovrebbe restituire false
